@@ -1,0 +1,103 @@
+// 轮播图start
+var index = 0;
+var timer = setInterval(autoplay, 3000);
+
+
+//自动轮播
+function autoplay() {
+    index++;
+    $('#showing_img>li').eq(index).fadeIn(500).siblings().fadeOut(500);
+    $('#dots_img>li').eq(index).addClass('current').siblings().removeClass('current');
+    if (index == $('#showing_img>li').length - 1) {
+        index = -1;
+    }
+}
+
+//底部圆点事件
+$('#dots_img>li').hover(function () {
+    clearInterval(timer);
+    index = $(this).index() - 1;
+    //timer = setInterval(autoplay, 3000);
+    var _timer=setTimeout(function(){
+       // clearTimeout(_timer);
+        autoplay();
+    },3000);
+});
+
+
+//左右两边按钮事件
+$('#toNext').click(function () {
+    clearInterval(timer);
+    autoplay();
+})
+
+$('#toPrev').click(function () {
+    clearInterval(timer);
+    index = $('#dots_img>li[class=current]').index() - 2;
+    autoplay();
+})
+
+//鼠标进入图片事件
+$('#showing_img').hover(function () {
+    clearInterval(timer);
+    $('#btn_img span').css('display', 'block')
+}, function () {
+    timer = setInterval(autoplay, 3000);
+    $('#btn_img span').css('display', 'none')
+})
+// 轮播图end
+
+
+//搜索框事件
+$('#searchinput').click(function () {
+    $(this).attr('placeholder', '');
+})
+
+$('#searchinput').on('keyup', function () {
+    var content = $(this).val();
+    var script = document.createElement('script');
+    script.src = `https://search.kaola.com/search.html?zn=top&key=${content}"`;
+    document.body.appendChild(script);
+})
+
+function fn(data) {
+    var result = data.suggestKeycords;
+    if (!result) {
+        // document.getElementById('search_ul').i
+        $('#search_ul').html('');
+    }
+
+    var str = ``;
+    for (i = 0; i < result.length; i++) {
+        str += `<li><a href="https://search.kaola.com/search.html?zn=top&key=${result[i]}">${result[i]}</a></li>`
+    }
+    $('#search_ul').html(str);
+}
+
+
+//页面滚动事件
+document.onscroll = function () {
+    var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop >= 110) {
+        $('#top_search').attr('style', 'position:fixed;top:0;height:50px;padding-top:5px;z-index:999;border-bottom: 1px solid #ddd;box-shadow: 0 0 10px rgba(0,0,0,.2)');
+        $('#suggestlist').attr("style","display:none");
+        $('#cart').attr("style","display:none");
+        $('.logokaola').attr('style', 'height:40px;width:162px');
+
+    } else {
+        $('#top_search').removeAttr('style');
+        $('.logokaola').removeAttr('style');
+        $('#cart').removeAttr('style');
+        $('#suggestlist').removeAttr('style');
+        
+    }
+
+
+    if (scrollTop >= 762) {
+        $('#indexleft').attr('style', 'position:fixed;top:66px;');
+        $('#rightBarNew').attr('style', 'position:fixed;top:66px;');
+    } else {
+        $('#indexleft').attr('style', 'position:absolute;top:762px;');
+        $('#rightBarNew').attr('style', 'position:absolute;top:762px;');
+    }
+}

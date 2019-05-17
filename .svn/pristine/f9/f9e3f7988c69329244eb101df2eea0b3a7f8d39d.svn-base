@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录 - 网易考拉</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/login.css">
+    <link rel="shortcut icon" href="images/favicon .ico" type="image/x-icon">
+    <script src="./js/jquery.js"></script>
+    <script src=".//layer/layer.js"></script>
+    <script src="./js/jquery.validate.js"></script>
+    <script src="./js/login.js"></script>
+</head>
+
+<body>
+    <header class="login-header-wrap">
+        <div class="login-header">
+            <a href="javascript:void(0);" title="网易考拉" class="logo"></a>
+            <div class="top-img"></div>
+        </div>
+    </header>
+    <!-- 主体内容部分-->
+    <div id="main">
+        <div class="container">
+            <img src="./images/main.png" alt="" class="main-img">
+            <!-- 登陆注册表单框部分 -->
+            <!-- 登陆表单 -->
+            <div class="login">
+                <div class="top">
+                    <div class="tab1" id="tel"><a href="javascript:void(0);">手机号登录</a></div>
+                    <span class="line">&nbsp;</span>
+                    <div class="tab2" id="email"><a href="javascript:void(0);">邮箱登录</a></div>
+                </div>
+                <div class="login-c">
+                    <form action="" id="login-from">
+                        <!-- 账号密码登陆 -->
+                        <div class="login-id">
+                            <div class="change">
+                                <a class="icon-img change-tab">使用密码验证登录</a>
+                            </div>
+                            <!-- 手机号和账号框 -->
+                            <div class="inputbox username">
+                                <div class="tel-logo">
+                                    <div class="icon-img tel-img"></div>
+                                </div>
+                                <input type="tel" maxlength="11" name="number" id="number" placeholder="请输入手机号">
+                            </div>
+                            <!-- 获取验证码框 -->
+                            <div class="inputbox getnumber">
+                                <input type="tel" maxlength="6" id="phonecode" name="phonecode" placeholder="请输入短信验证码">
+                                <div class="pcbtn">
+                                    <a class="getsmscode" href="javascript:void(0);">获取验证码</a>
+                                </div>
+                            </div>
+                            <!-- 密码框 -->
+                            <div class="inputbox password">
+                                <div class="pass-logo">
+                                    <div class="icon-img pass-img"></div>
+                                </div>
+                                <input type="password" maxlength="16" id="password" name="password" placeholder="密码">
+                            </div>
+                        </div>
+                        <!-- 邮箱登陆 -->
+                        <div class="login-email">
+                            <div class="inputbox username">
+                                <div class="tel-logo">
+                                    <div class="icon-img tel-img"></div>
+                                </div>
+                                <input type="email" name="email" id="email" placeholder="网易邮箱账号">
+                            </div>
+                            <!-- 密码框 -->
+                            <div class="inputbox password">
+                                <div class="pass-logo">
+                                    <div class="icon-img pass-img"></div>
+                                </div>
+                                <input type="password" id="e-password" name="password" placeholder="密码">
+                            </div>
+                        </div>
+                        <!-- 输入错误提示框 -->
+                        <div class="ferrorhead"></div>
+                        <!-- 登陆按钮 -->
+                        <button href="javascript:void(0);" id="submitBtn">登 录</button>
+                        <!-- 记住密码 -->
+                        <div class="rember">
+                            <div>
+                                <input type="checkbox" class="rember-btn">
+                                <a href="javascript:;" class="rember-a">10天免登录</a>
+                            </div>
+                            <a href="javascript:void(0);" class="found">忘记密码？</a>
+                        </div>
+                        <p class="proto">登录即代表您已同意&nbsp;<span>"隐私权相关政策"</span></p>
+                    </form>
+                </div>
+                <!-- 登陆底部第三方登陆 -->
+                <div class="share">
+                    <ul>
+                        <li><a href="javascript:;" class="icon-img weixin"></a></li>
+                        <li><a href="javascript:;" class="icon-img zhifubao"></a></li>
+                        <li><a href="javascript:;" class="icon-img weibo"></a></li>
+                        <li><a href="javascript:;" class="icon-img qq"></a></li>
+                    </ul>
+                    <a href="javascript:;" class="gotoreg">手机快捷注册 <span class="icon-img zhuce"></span></a>
+                </div>
+            </div>
+            <!-- 注册表单 -->
+            <div class="regiter">
+                <div class="top">
+                    <div class="tab1">欢迎注册</div>
+                    <div class="tab2">已有账号？<a href="javascript:void(0);" class="gotologin">去登陆></a></div>
+                </div>
+                <div class="regiter-c">
+                    <form action="" id="regiter-from">
+                        <!-- 手机号和账号框 -->
+                        <div class="inputbox username">
+                            <div class="tel-logo">
+                                <div class="icon-img tel-img"></div>
+                            </div>
+                            <input type="tel" name="number" id="r-number" placeholder="请输入手机号">
+                        </div>
+
+                        <!-- 密码框 -->
+                        <div class="inputbox password middle">
+                            <div class="pass-logo">
+                                <div class="icon-img pass-img"></div>
+                            </div>
+                            <input type="password" maxlength="16" id="r-password" name="password" placeholder="请输入密码">
+                        </div>
+                        <!-- 确认密码框 -->
+                        <div class="inputbox password">
+                            <div class="pass-logo">
+                                <div class="icon-img pass-img"></div>
+                            </div>
+                            <input type="password" maxlength="16" id="re-password" name="repassword" placeholder="确认密码">
+                        </div>
+                <!-- 输入错误提示框 -->
+                <div class="ferrorhead"></div>
+                <!-- 注册按钮 -->
+                <button href="javascript:void(0);"  id="regiterBtn">注 册</button>
+                <!-- <input type="button" id="regiterBtn" value="注 册"> -->
+                <p class="proto"> 
+                    <input type="checkbox" class="consent" checked>                    
+                    我同意&nbsp;《服务条款》&nbsp;和&nbsp;《网易隐私政策》
+                </p>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

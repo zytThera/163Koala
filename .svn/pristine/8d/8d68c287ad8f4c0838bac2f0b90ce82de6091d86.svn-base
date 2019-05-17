@@ -1,0 +1,372 @@
+/* 网页头部 */
+.login-header-wrap {
+    position: relative;
+    z-index: 103;
+    height: 100px;
+    border-bottom: 1px solid #e8e8ea;
+    background: #fff;
+}
+.login-header-wrap .login-header {
+    position: relative;
+    margin: 0 auto;
+    width: 1000px;
+    height: 100px;
+    zoom: 1;
+}
+.login-header-wrap .logo {
+    position: absolute;
+    z-index: 9;
+    top: 20px;
+    left: 0;
+    width: 330px;
+    height: 65px;
+    line-height: 65px;
+    cursor: pointer;
+    outline: none;
+    background-image: url('../images/logo.png');
+    background-repeat: no-repeat;
+    background-position: 0;
+}
+.login-header-wrap .top-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 504px;
+    height: 100px;
+    background-image: url(../images/top.png);
+    background-size: cover;
+}
+/* 主体内容部分 */
+#main{
+    background-color: #f8f8f8;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size: cover;
+}
+#main .container{
+    position: relative;
+    margin: 0 auto;
+    width: 1000px;
+    height: 630px;
+}
+#main .container .main-img{
+    position: absolute;
+    top: 154px;
+    left: 10px;
+    width: 400px;
+    height: 203px;
+}
+/* 登陆框部分*/
+#main .login{
+    /* display: none; */
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: 40px;
+    width: 350px;
+    font-size: 12px;
+    transform: translateY(-50%);
+    border: 1px solid #eaeaea;
+    background-color: #fff;
+}
+/* 注册框部分 */
+#main .regiter{
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    right: 40px;
+    width: 350px;
+    font-size: 12px;
+    transform: translateY(-50%);
+    border: 1px solid #eaeaea;
+    background-color: #fff;
+}
+/* 登陆框顶部 和注册框顶部*/
+.login .top ,.regiter .top{
+    position: relative;
+    width: 350px;
+    height: 52px;
+    font-size: 16px;
+    line-height: 52px;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+.login .top .tab1,.regiter .top .tab1{
+    float: left;
+    width: 175px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+}
+.login .top .line{
+    position: absolute;
+    top: 17px;
+    left: 175px;
+    width: 0;
+    height: 20px;
+    border-right: 1px solid #ddd;
+}
+.login .top .tab2{
+    float: left;
+    width: 175px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+}
+/* 注册框顶部分开的样式 */
+.regiter .top .tab1{
+    font-weight: 700;
+    color: #e31436;
+}
+.regiter .top .tab2{
+    float: right;
+    font-size: 12px;
+    cursor: pointer;
+}
+.regiter .top .tab2 a{
+    color: #409eff;
+}
+/* 登录框中间内容，账号密码和记住密码 */
+.login .login-c,.regiter .regiter-c{
+    width: 270px;
+    height: 254px;
+    padding: 20px 40px 15px;
+    background-color: #fff;
+}
+/* .login-c #login-from{
+    width: 100%;
+    height: 100%;
+} */
+/* 账号密码登陆 */
+.login-id{
+    display: block;
+}
+/* 邮箱登陆 */
+.login-email{
+    display: none;
+}
+/* 验证码登陆和密码登陆切换 */
+.icon-img{
+    background: url('../images/ursicon.png' ) no-repeat;
+}
+.login-c .change{
+    height: 14px;
+    width: 270px;
+    padding: 0 0 10px 0;
+}
+.change .change-tab{
+    display: block;
+    float: right;
+    width: 96px;
+    height: 14px;
+    padding-left: 17px;
+    line-height: 14px;
+    cursor: pointer;
+}
+/* 登陆的输入框 */
+.login-c .inputbox ,.regiter .inputbox{
+    height: 34px;
+    line-height: 30px;
+    border:1px solid #d5d5d5;
+    border-radius: 2px;
+}
+/* 输入账号框 */
+.username .tel-logo{
+    float: left;
+    width: 21px;
+    height: 36px;
+    text-align: center;
+    padding: 0 5px 0 10px;
+}
+.username .tel-logo .tel-img{
+    width: 17px;
+    height: 18px;
+    margin-top: 8px;
+    /* background: url('../images/ursicon.png' ) no-repeat -36px -34px; */
+    background-position: -36px -34px;
+}
+/* 输入验证码框*/
+.username #number{
+    height: 30px;
+    margin: 2px 0;
+    outline: none;
+    border: 0;
+}
+.login-c .getnumber{
+    margin-top: 20px;
+}
+.getnumber #phonecode{
+    width: 130px;
+    padding-left: 8px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: normal;
+    border: 0;
+    margin: 1px 19px 0 0;
+}
+.getnumber .pcbtn{
+    /* position: absolute;
+    top: 1px;
+    right: 1px; */
+    z-index: 100;
+    display: inline-block;
+    margin-left: 10px;
+}
+.getnumber .pcbtn a {
+    display: inline-block;
+    height: 34px;
+    width: 96px;
+    line-height: 32px;
+    background-color: #eee;
+    color: #333;
+    border-left: #d5d5d5 solid 1px;
+    text-align: center;
+    font-size: 14px;
+}
+/* 密码框 */
+.login-c .password{
+    display: none;
+    margin-top: 20px;
+}
+.password .pass-logo{
+    float: left;
+    width: 21px;
+    height: 36px;
+    text-align: center;
+    padding: 0 5px 0 10px;
+}
+.password .pass-logo .pass-img{
+    width: 17px;
+    height: 18px;
+    margin-top: 8px;
+    background-position: -68px -34px;
+}
+.password #password{
+    height: 30px;
+    margin: 2px 0;
+    outline: none;
+    border: 0;
+}
+/* 注册输入框间隔 */
+.regiter-c .username{
+    margin-top: 20px;
+}
+.regiter-c .middle{
+    margin: 16px 0;
+}
+/* 输入错误提示框 */
+.login-c .ferrorhead,.regiter .ferrorhead{
+    height: 20px;
+    margin-top: 6px;
+    color: #fa5b5b;
+    font-size: 12px;
+    line-height: 20px;
+    vertical-align: top;
+    word-break: break-all;
+}
+/* 登陆按钮 */
+.login-c .loginbtn,.regiter .regiterbtn{
+    width: 100%;
+    height: 36px;
+    background-color: #e31436;
+    margin-top: 8px;
+    margin-bottom: 10px;
+}
+.login-c .loginbtn a,.regiter .regiterbtn a{
+    display: block;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    line-height: 36px;
+}
+/* 记住密码 */
+.login-c .rember{
+    padding: 0 0 15px 0;
+    height: 16px;
+    line-height: 16px;
+}
+.rember div:nth-child(1){
+    display: block;
+    width: 104px;
+    float: left;
+    margin-right: 8px;
+}
+.rember .rember-btn{
+    float: left;
+    margin-top: 2px;
+}
+.rember .rember-a{
+    display: block;
+    float: left;
+    height: 16px;
+    padding-left: 8px;
+    font-size: 12px;
+    color: #999;
+    line-height: 17px;
+}
+.rember .found{
+    display: block;
+    width: 60px;
+    height: 12px;
+    line-height: 12px;
+    color: #999;
+    float: right;
+}
+.proto span{
+    color: #999;
+    text-decoration: underline;
+}
+/* 登陆底部第三方登陆 */
+.share{
+    padding: 10px 40px;
+    width: 270px;
+    height: 20px;
+    font-size: 14px;
+    border-top: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+.share ul{
+    float: left;
+    width: 160px;
+}
+.share ul li{
+    display: block;
+    position: relative;
+    float: left;
+    margin-right: 10px;
+    width: 22px;
+    height: 22px;
+}
+.share .icon-img{
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background: url('../images/icon1.png') no-repeat -760px -401px;
+}
+.share ul li .zhifubao{
+    background-position:-792px -401px;
+}
+.share ul li .weibo{
+    background-position:-824px -401px;
+}
+.share ul li .qq{
+    background-position:-856px -401px;
+}
+.share .gotoreg{
+    display: block;
+    float: right;
+    width: 105px;
+    line-height: 22px;
+    cursor: pointer;
+    color: #e31436;
+}
+.share .zhuce{
+    width: 14px;
+    height: 14px;
+    background-position: -899px -406px;
+}

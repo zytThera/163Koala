@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>购物车-网易考拉</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/cart.css">
+    <link rel="shortcut icon" href="images/favicon .ico" type="image/x-icon">
+    <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+    <!-- 头部导航 -->
+    <div id="top_nav">
+        <div class="container clearfix">
+
+            <div id="top_navleft">
+                <span>考拉欢迎你！</span>
+                <a href="javascript:void(0);" class="login">登录</a>
+                <a href="javascript:void(0);">免费注册</a>
+            </div>
+
+
+
+            <div id="top_navmiddle">
+                <a href="javascript:void(0);">手机考拉</a>
+            </div>
+
+            <ul id="top_navright">
+                <li><a href="javascript:void(0);">每日签到</a></li>
+                <li><a href="javascript:void(0);">我的订单</a></li>
+                <li><a href="javascript:void(0);">个人中心<span class="iconfont icon-arrow-b"></span></a></li>
+                <li><a href="javascript:void(0);">客户服务<span class="iconfont icon-arrow-b"></span></a></li>
+                <li><a href="javascript:void(0);">充值中心<span class="iconfont icon-arrow-b"></span></a></li>
+                <li><a href="javascript:void(0);">消费者权益<span class="iconfont icon-arrow-b"></span></a></li>
+                <li><a href="javascript:void(0);">更多<span class="iconfont icon-arrow-b"></span></a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- logo -->
+    <!-- 登陆页面，顶部为一张固定的图片 -->
+    <div id="docHeadWrap" class="container">
+        <a href="javascript:void(0);" class="logokaola " title="网易考拉"></a>
+    </div>
+
+    <!-- 购物车商品列表 -->
+    <!-- 没添加商品是的样子 -->
+    <div id="main" class="nogoods container">
+        <div class="warp">
+            <p>购物车里空空如也，赶紧去&nbsp;<a href="javascript:void(0);">逛逛吧&gt;</a></p>
+        </div>
+    </div>
+    <!-- 有商品之后 -->
+    <div id="cartbox" class="container">
+        <h3 class="tt">我的购物车 1</h3>
+        <div class="head">
+            <div class="col col1">
+                <input type="checkbox" id="selectAll" name="selectAll" class="a-chk">
+                <span>全选</span>
+            </div>
+            <div class="col col2">商品信息</div>
+            <div class="col col3">单价(元)</div>
+            <div class="col col4">数量</div>
+            <div class="col col5">金额(元)</div>
+            <div class="col col6">操作</div>
+        </div>
+        <div class="goods">
+            <ul class="actgoods">
+                <li class="goodsitem">
+                    <div class="col col1">
+                        <input type="checkbox" name="selectGood" class="u-chk">
+                    </div>
+                    <div class="col col2">
+                        <a href="javascript:void(0);" class="imgwarp">
+                            <img src="./images/goods1.png" alt="">
+                        </a>
+                        <div class="txtwarp">
+                            <h3 class="goodstlt">【领券满299减30】【光感小白瓶】OLAY 玉兰油 水感透白光塑精华露 30毫升</h3>
+                        </div>
+                    </div>
+                    <div class="col col3">
+                        <span>179</span>
+                    </div>
+                    <div class="col col4">
+                        <span class="u-setcount">
+                            <span class="minus z-dis">-</span>
+                            <input type="text" max="10" min="1" value="1"  class="ipt" name="tempBuyAmount">
+                            <span class="plus">+</span>
+                        </span>
+                    </div>
+                    <div class="col col5">
+                        <span class="sum">179</span>
+                    </div>
+                    <div class="col col6">
+                        <a class="u-opt">删除</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="tbar">
+            <div class="lt">
+                <input type="checkbox" id="re-selectAll" name="selectAll" class="a-chk">
+                <span>全选</span>
+                <a href="javascript:;" class="delAll">删除选中商品</a>
+            </div>
+            <div class="rt">
+                <p class="allgoods">已选商品 <em class="num">0</em> 件 <span class="itm">总价(不含运费)：<em class="money">￥0</em></span></p>
+            </div>
+            <a class="gobuy">去结算</a>
+        </div>
+    </div>
+</body>
+<script src="./js/cart.js"></script>
+</html>

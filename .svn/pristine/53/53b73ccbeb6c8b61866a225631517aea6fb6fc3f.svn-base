@@ -1,0 +1,51 @@
+// 轮播图start
+var index = 0;
+var timer = setInterval(autoplay, 3000);
+
+
+//自动轮播
+function autoplay() {
+    index++;
+    $('#showing_img>li').eq(index).fadeIn(500).siblings().fadeOut(500);
+    $('#dots_img>li').eq(index).addClass('current').siblings().removeClass('current');
+    if (index == $('#showing_img>li').length - 1) {
+        index = -1;
+    }
+}
+
+//底部圆点事件
+$('#dots_img>li').hover(function () {
+    clearInterval(timer);
+    index = $(this).index() - 1;
+    //timer = setInterval(autoplay, 3000);
+    autoplay();
+}, function () {
+     timer = setInterval(autoplay, 3000);
+    //autoplay();
+})
+
+
+//左右两边按钮事件
+$('#toNext').click(function(){
+    clearInterval(timer);
+    autoplay();
+})
+
+$('#toPrev').click(function(){
+    clearInterval(timer);
+    index=$('#dots_img>li[class=current]').index()-2;
+    autoplay();
+})
+
+//鼠标进入图片事件
+$('#showing_img>li').hover(function(){
+    clearInterval(timer);
+},function(){
+    timer = setInterval(autoplay, 3000);
+})
+// 轮播图end
+
+$('#searchinput').click(function(){
+    $(this).attr('placeholder','');
+})
+

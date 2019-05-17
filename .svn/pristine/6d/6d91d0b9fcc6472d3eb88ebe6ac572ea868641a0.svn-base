@@ -1,0 +1,115 @@
+
+$(function () {
+    //二级菜单的实现
+    $(".mixboxone").on("mouseover", function () {
+        var index = $(this).index();
+        $(".hidden-layer").eq(index).css("display:block").parent().css("display:none")
+
+        // $(".hidden-layer").css({ "display": "none", "display": "block" });
+        // $(".mixboxone").css("border-bottom:none");
+
+        // $(".mixboxone").mouseout(function () {
+        //     $(".hidden-layer").css({ "display": "block", "display": "none" });
+        //     $(".mixboxone").css("border-bottom:1px");
+        // })
+        //    if(($(".mixboxone").mouseout(function(){}))
+
+
+    });
+    $(".mixboxtwo").on("mouseover", function () {
+
+        $(".hidden-layer").css({ "display": "none", "display": "block" });
+        $(".mixboxtwo").css("border-bottom:none");
+
+        $(".mixboxone").mouseout(function () {
+            $(".hidden-layer").css({ "display": "block", "display": "none" });
+            $(".mixboxtwo").css("border-bottom:1px");
+        })
+        //    if(($(".mixboxone").mouseout(function(){}))
+
+
+    });
+
+
+
+
+    $(".maskimg").on("mouseover", function () {
+        $(".mask").show();
+        $(".maxbox").show();
+
+    });
+    $(".maskimg").on("mouseout", function () {
+        $(".mask").hide();
+        $(".maxbox").hide();
+    })
+    $(".maskimg").mousemove(function (e) {
+        //鼠标移动的时候遮罩层跟着鼠标一起移动，鼠标在遮罩层的中间位置
+
+
+        // $(".maskimg").hover(function(){
+        //     $(".mask").show();
+        //     $(".maxbox").show();
+        // }, function () {
+        //     $(".mask").hide();
+        //     $(".maxbox").hide();
+
+        var mouseX = e.pageX; //记录鼠标所在的位置X坐标        
+        var mouseY = e.pageY; //记录鼠标所在的Y坐标
+
+        var maskWidth = $(".mask").width();// 获取遮罩层的宽度；  
+        var maskHeight = $(".mask").height();//获取遮罩层的高度；
+
+        //鼠标的位置减去遮罩层的相对位置，再减去遮罩层的宽度或者高度除以2
+
+
+        var imgLeft = $(".maskimg").offset().left; //左边容器的相对宽度位置 
+          
+        var imgTop = $(".maskimg").offset().top; //左边容器的相对高度 
+
+
+
+        //鼠标移动的位置
+        var x = mouseX - maskWidth / 2;
+        // // console.log(x);
+        var y = mouseY - maskHeight / 2;
+
+
+        var maxboxImgwidth = $(".maxbox img").width();  //获取大图的宽度 
+        
+        var maxboxImgheight = $(".maxbox img").height(); //获取大图的高度
+
+
+        $(".mask").offset({  //获取遮罩层的位置，x和Y；
+            top: mouseY - maskHeight / 2,
+            left: mouseX - maskWidth / 2
+        })
+        $(".maxbox img").offset({
+            top: (mouseY-maskHeight/2)*2,
+            left:(mouseX-maskWidth/2)*2
+        })
+        var imgWidth = $(".maskimg").width();     //左边容器的宽度
+
+        var imgHeight = $(".maskimg").height();    //左边容器的高度
+        if (x < 0) { //
+            x = 0;
+        }
+        if (x > imgWidth - maskWidth) {
+            x = imgWidth - maskWidth;
+        }
+        if (y < 0) {
+            y = 0;
+        }
+        if (y > imgHeight - maskHeight) {
+            y = imgHeight - maskHeight;
+        }
+        // })
+
+
+
+
+    })
+
+
+
+
+});

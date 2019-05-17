@@ -1,0 +1,72 @@
+{
+    "goods1":{
+        "url":"../images/goods1.png",
+        "id":"1",
+        "name":"【领券满299减30】【光感小白瓶】OLAY 玉兰油 水感透白光塑精华露 30毫升",
+        "number":"1",
+        "price":"225"
+    },
+    "goods2":{
+        "url":"../images/goods2.png",
+        "id":"2",
+        "name":"HUAWEI 华为 MateBook X i5 13英寸 4G+256G深空灰",
+        "number":"1",
+        "price":"5999"
+    },
+    "goods3":{
+        "url":"../images/goods3.png",
+        "id":"3",
+        "name":"网易严选 脆脆虾 20克",
+        "number":"1",
+        "price":"18"
+    },
+    "goods4":{
+        "url":"../images/goods4.png",
+        "id":"4",
+        "name":"三只松鼠 约辣辣条200克",
+        "number":"1",
+        "price":"9.9"
+    },
+    "goods5":{
+        "url":"../images/goods5.png",
+        "id":"5",
+        "name":"小米（MI）小米手环3 心率监测 智能提醒 睡眠监测 计步",
+        "number":"1",
+        "price":"169"
+    },
+    "goods6":{
+        "url":"../images/goods6.png",
+        "id":"6",
+        "name":"Apple 苹果 iPhone Xs Max (A2104) 256G 移动联通电信4G手机 双卡双待",
+        "number":"1",
+        "price":"9299"
+    },
+    "goods7":{
+        "url":"../images/goods7.png",
+        "id":"7",
+        "name":"良品铺子风味猪肉脯自然片（香辣味）100g",
+        "number":"1",
+        "price":"21.9"
+    },
+    "goods8":{
+        "url":"../images/goods8.png",
+        "id":"8",
+        "name":"三只松鼠 乳酸菌小伴侣面包520克/箱",
+        "number":"1",
+        "price":"49.9"
+    },
+    "goods9":{
+        "url":"../images/goods9.png",
+        "id":"9",
+        "name":"【多色可选 橘色现货】Huawei/华为 P30大屏超感光徕卡三摄变焦双景录像980芯片智能手机p 30 p20",
+        "number":"1",
+        "price":"3988"
+    },
+    "goods10":{
+        "url":"../images/goods10.png",
+        "id":"10",
+        "name":"【正反两戴】SWAROVSKI施华洛世奇项链女当季镂空黑白双面小天鹅项链送女友5281275",
+        "number":"1",
+        "price":"689"
+    }
+}

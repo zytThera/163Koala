@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网易考拉详情页</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/page.css">
+    <link rel="stylesheet" href="./css/iconfont.css">
+    <link rel="icon" href="./images/x-.ico" type="image/x-icon">
+    <script src="./js/jquery.js"></script>
+    <script src="./js/promiseAjax.js"></script>
+    <script src="./js/detail.js"></script>
+    <script src="./js/car.js"></script>
+    
+</head>
+
+<body>
+      <!-- 顶部广告区 -->
+      <div id='top_title_line'>
+            <div id='top_ads'>
+                <a href="https://pages.kaola.com/pages/activity/20190428-0510.shtml?from=topBanner&zn=top"
+                    target='_blank'><img src="./images/top_ads.jpg"> </a>
+            </div>
+        </div>
+    
+        <!-- 头部导航和搜索区 -->
+        <header id="header" class="clearfix">
+    
+            <!-- 头部导航 -->
+            <div id="top_nav">
+                <div class="container clearfix">
+    
+                    <div id="top_navleft">
+                        <span>考拉欢迎你！</span>
+                        <a href="../login/login.html" class="login">登录</a>
+                        <a href="../login/login.html">免费注册</a>
+                    </div>
+    
+    
+    
+                    <div id="top_navmiddle">
+                        <a href="javascript:;">手机考拉</a>
+                    </div>
+    
+                    <ul id="top_navright">
+                        <li><a href="javascript:;">每日签到</a></li>
+                        <li><a href="javascript:;">我的订单</a></li>
+                        <li><a href="javascript:;">个人中心<span class="iconfont icon-arrow-b"></span></a></li>
+                        <li><a href="javascript:;">客户服务<span class="iconfont icon-arrow-b"></span></a></li>
+                        <li><a href="javascript:;">充值中心<span class="iconfont icon-arrow-b"></span></a></li>
+                        <li><a href="javascript:;">消费者权益<span class="iconfont icon-arrow-b"></span></a></li>
+                        <li><a href="javascript:;">更多<span class="iconfont icon-arrow-b"></span></a></li>
+                    </ul>
+                </div>
+            </div>
+    
+    
+            <!-- 头部搜索区 -->
+    
+            <div id="top_search">
+                <div class="s-inner container clearfix">
+                    <!-- logo -->
+                    <div id="logo">
+                        <a href="javascript:;" class="logokaola " title="网易考拉"></a>
+                    </div>
+                    <!-- 搜索框 -->
+                    <div id="topsearchbox">
+                        <div id="topsearch">
+                            <div class="wrap">
+                                <input id="searchinput" placeholder="ahc套装" type="text">
+                                <ul id='search_ul'>
+    
+                                </ul>
+                                <span class="topsearchboxBackGround" f_c="1">
+                                    <span id="topSearchBtn" class="iconfont icon-fdj"></span>
+                                </span>
+                                <span class="iconfont icon-search icos"></span>
+                            </div>
+                            <ul id="suggestlist">
+                                <li><a href="javascript:;">面膜</a></li>
+                                <li><a href="javascript:;">口红</a></li>
+                                <li><a href="javascript:;">减肥</a></li>
+                                <li><a href="javascript:;">全球工厂店</a></li>
+                                <li><a href="javascript:;">运动鞋</a></li>
+                                <li><a href="javascript:;">项链</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 购物车 -->
+                    <div id="cart" class="clearfix">
+                        <a href="../cart/cart.html" class="m-shopcartnew f-hkdn m-shopcartnew-1">
+                            <i class="iconfont icon-gwc "></i>
+                            <span class="wrap">购物车<b class=" num" id="newcartnum">1</b></span>
+                        </a>
+                    </div>
+    
+                </div>
+                <!-- end:container -->
+            </div>
+            <!-- end:top_search -->
+        </header>
+
+    <!-- 头部选项卡导航区 -->
+    <div id="topTab">
+            <div class="tab-inner container">
+                <div class="shell">
+                    <div id="topCats" class="navitm-cats">
+                        <!-- <div class="toplevel">
+                            <i class="iconfont icon-nav lineicon"></i>
+                            <span>所有分类</span>
+                        </div> -->
+                        <!-- 横向菜单选项卡 -->
+                        <ul id="funcTab">
+                            <li class="navitm active" data-effect="1" _ti="1">
+                                <a class="toplevel" target="_blank">
+                                    首页
+                                </a>
+                            </li>
+                            <li class="navitm">
+                                <a class="toplevel" target="_blank">
+                                    今日限时购
+                                </a>
+                            </li>
+                            <li class="navitm" data-effect="1" _ti="1">
+                                <a class="toplevel" target="_blank">
+                                    每日上新
+                                </a>
+                            </li>
+                            <li class="navitm" data-effect="1" _ti="1">
+                                <a class="toplevel" target="_blank">
+                                    国家馆
+                                </a>
+                            </li>
+                            <li class="navitm" data-effect="1" _ti="1">
+                                <a class="toplevel" target="_blank">
+                                    海外旗舰店
+                                </a>
+                            </li>
+                            <li class="navitm" data-effect="1" _ti="1">
+                                <a class="toplevel" target="_blank">
+                                    工厂店
+                                </a>
+                            </li>
+                            <li class="navitm" data-effect="1" _ti="1">
+                                <a class="toplevel" target="_blank">
+                                    品质奶粉
+                                </a>
+                            </li>
+                            <li class="navitm" data-effect="1" _ti="1">
+                                <a class="toplevel" target="_blank">
+                                    人气面膜
+                                </a>
+                            </li>
+                            <li class="navitm" data-effect="1" _ti="1">
+                                <a class="toplevel" target="_blank">
+                                    礼品卡
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <ul class="catitmlst">
+                    <li><img class="imgicon" src="images/wimgicon1.png" alt=""><span>美容彩妆</span><i
+                            class="iconfont icon-arrow-b"></i></li>
+                    <li><img class="imgicon" src="images/wimgicon2.png" alt=""><span>母婴儿童</span><i
+                            class="iconfont icon-arrow-b"></i></li>
+                    <li><img class="imgicon" src="images/wimgicon3.png" alt=""><span>营养保健</span><i
+                            class="iconfont icon-arrow-b"></i></li>
+                    <li><img class="imgicon" src="images/wimgicon4.png" alt=""><span>数码家电</span><i
+                            class="iconfont icon-arrow-b"></i></li>
+                    <li><img class="imgicon" src="images/wimgicon5.png" alt=""><span>个人洗护</span><i
+                            class="iconfont icon-arrow-b"></i></li>
+                    <li><img class="imgicon" src="images/wimgicon6.png" alt=""><span>服饰鞋靴</span><i
+                            class="iconfont icon-arrow-b"></i></li>
+                    <li><img class="imgicon" src="images/wimgicon7.png" alt=""><span>运动户外</span><i
+                            class="iconfont icon-arrow-b"></i></li>
+                    <li><img class="imgicon" src="images/wimgicon8.png" alt=""><span>手表配饰</span><i
+                            class="iconfont icon-arrow-b"></i></li>
+                    <li><img class="imgicon" src="images/wimgicon9.png" alt=""><span>轻奢</span><i
+                            class="iconfont icon-arrow-b"></i></li>
+                    <li><img class="imgicon" src="images/wimgicon10.png" alt=""><span>家居生活</span><i
+                            class="iconfont icon-arrow-b"></i></li>
+                    <li><img class="imgicon" src="images/wimgicon11.png" alt=""><span>环球美食</span><i
+                            class="iconfont icon-arrow-b"></i></li>
+                </ul> -->
+            </div>
+        </div>
+    
+        
+    <!-- 详情页开始 -->
+    <article id="inner" class="mainwrp">
+        <div class="curbarbox">
+            <div class="classfiy">
+                <span>厨房餐饮</span>
+                <span>
+                    <i>></i>
+                </span>
+
+                <div class="mibox mixboxone">
+
+                    <div class="mixbox_1">
+                        <a href="#">杯子/水壶</a>
+                    </div>
+                    <i class="iconfont icon-xjt"></i>
+
+                </div>
+                <div class="hidden-layer">
+
+                    <a href="">烧烤用具</a>
+                    <a href="">房用具</a>
+                    <a href="">刀具刀</a>
+                    <a href="">茶具</a>
+                    <a href="">手工用具</a>
+
+                    <a href="">烧烤用具</a>
+                    <a href="">厨房用具</a>
+                    <a href="">刀具</a>
+                    <a href="">茶具</a>
+                    <a href="">手工用具</a>
+
+                    <a href="">烧用具</a>
+                    <a href="">厨用具</a>
+                    <a href="">刀具</a>
+                    <a href="">茶具</a>
+                    <a href="">手工用具</a>
+
+                </div>
+                <div class="mibox mixboxone ">
+                    <div class="mixbox_1">
+                        <a href="#">保温杯</a>
+
+                    </div>
+                    <i class="iconfont icon-xjt"></i>
+                </div>
+                <div class="hidden-layer therbox">
+
+                    <a href="">烧烤用具</a>
+                    <a href="">厨房用具</a>
+                    <a href="">刀具</a>
+                    <a href="">茶具</a>
+                    <a href="">手工用具</a>
+
+                    <a href="">烧烤用具</a>
+                    <a href="">厨房用具</a>
+                    <a href="">刀具</a>
+                    <a href="">茶具</a>
+                    <a href="">手工用具</a>
+
+                    <a href="">烧烤用具</a>
+                    <a href="">厨房用具</a>
+                    <a href="">刀具</a>
+                    <a href="">茶具</a>
+                    <a href="">手工用具</a>
+
+                </div>
+                <div class="mibox">
+                    <div class="mixbox_1">
+                        <a href="#">膳魔师</a>
+
+                    </div>
+                    <span class="iconfont icon-xjt "> </span>
+                </div>
+
+                <span>>THERMOS膳魔师超轻真空大容量保温杯JNL50</span>
+            </div>
+
+        </div>
+        <!-- 图片描述 -->
+        <div id="producthead">
+
+          
+            <div class="left-box">
+                <div class="maskimg">
+                    <img src="./images/img01.jpg" alt="">
+                    <span class="mask"></span>
+                </div>
+                <!-- !!!! -->
+               
+                <div class="maxbox">
+                    <img src="./images/img01.jpg" alt="">
+                </div>
+
+                <a href="javascript:;" class="iconfont icon-xiangzuo scrollbtn scrollleft"></a>
+                <a href="javascript:;" class="iconfont icon-xiangyou scrollbtn scrollright"></a>
+                <div class="listimg-box">
+                    <ul class="listUl">
+                        <li class="zengjia">
+                            <a href="javascript:;">
+                                <img src="./images/min1.jpg" alt="">
+                            </a>
+                        </li>
+                        <li class="zengjia">
+                            <a href="javascript:;">
+                                <img src="./images/min2.jpg" alt="">
+                            </a>
+                        </li>
+                        <li class="zengjia">
+                            <a href="javascript:;">
+                                <img src="./images/min3.jpg" alt="">
+                            </a>
+                        </li>
+                        <li class="zengjia">
+                            <a href="javascript:;">
+                                <img src="./images/min1.jpg" alt="">
+                            </a>
+                        </li>
+                        <li class="zengjia">
+                            <a href="javascript:;">
+                                <img src="./images/min2.jpg" alt="">
+                            </a>
+                        </li>
+                        <li class="zengjia">
+                            <a href="javascript:;">
+                                <img src="./images/min3.jpg" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="#" title="查看大图" class="iconfont icon-fangdajing showlocalImg"></a>
+                <div></div>
+            </div>
+
+            <dl class="right-box">
+                <dt class="PTags">
+                    <i class="iconfont icon-yi"></i>
+                    <i class="iconfont icon-ziying"></i>
+                    <i class="iconfont icon-kuajing"></i>
+                    <i class="iconfont icon-ziying"></i>
+                </dt>
+                <dt class="orig-country">
+                    <img src="images/deguo.png" alt="" class="">
+                    <span>德国</span>
+                    <span>|</span>
+                    <a href="#">THERMOS 魔膳师</a>
+                </dt>
+                <dt class="product-title">
+                    <span id="tit">THERMOS膳魔师超轻真空大容量保温杯JNL502系列 旅行必备 500毫升</span>
+                </dt>
+                <dt class="subTit">美由内而外，无须一言一行，只需要你帮我留住杯中的温暖。这款保温很适合放在办公室或者长途旅行的时候带着哦，特别实用。一键开盖，单手即可操作！多色可选，都是经典。自用送人两相宜。
+
+                </dt>
+                <dd class="m-price-warp">
+                    <div class="m-price">
+                        <span class="m-price-title">售价</span>
+                        <div class="m-price-cnt">
+                            <span class="newserttxt">新人价 </span>
+                            <span class="newser-price">
+                                <span class="rmb">￥</span>
+                                147.00
+                            </span>
+                            <span class="kaolaprice">
+                                考拉价 &ensp;￥ 155.00
+                            </span>
+                        </div>
+                    </div>
+                    <div class="m-vipmember">
+                        <div class="msg">
+                            <img src="./images/heika.png" alt="">
+                            <span class="vtxt">
+                                黑卡会员预计可
+                                <i class="">省￥5.85</i>
+                            </span>
+                            <div class="msg">
+                                <img src="./images/heika.png" alt="" class="vicon">
+                                <span class="vtxt z-grey">含会员94折</span>
+                                <div class="becomevip">
+                                    <span class="cardtxt">立即开卡</span>
+                                </div>
+                            </div>
+                            <div class="m-couponkaolabean">
+                                <div class="line">
+
+                                    <div class="desc">
+                                        <i class="iconfont icon-quan"></i>
+                                        <span class="li ellipsis">先领每满199减20优惠券，再下单</span>
+                                        <a href="#" class="getcoupon">点击领取</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+                <dd class="m-taxrateline f-cb m-taxrateline-2" _ti="28">
+                    <span class="m-line-title f-fl" _ti="28">税费</span>
+
+                    <div class="descwrap f-fl" _ti="28">
+
+
+                        <!--Regular if135-->
+
+
+                        <!--Regular if136-->
+                        <div class="taxmsg" _ti="28">
+
+                            预估￥
+                            <b _ti="28">14.11</b>，实际税费请以提交订单时为准
+                            <span class="skutaxdesc" _ti="28">
+                                <span class="maintext" _ti="28">
+                                    税费收取规则
+                                    <span class="tri_up iconfont icon-triup" _ti="28"></span>
+                                    <span class="tri_down iconfont icon-tridown" _ti="28"></span>
+                                </span>
+                                <span class="desc" _ti="28">
+                                    <!--Regular if137-->
+                                    <!-- <a target="_blank" href="//www.kaola.com/footer/tariff.shtml#Q4" _ti="28">税费=购买单价 * 件数 * 税负率</a><br _ti="28">
+                                    优惠券抵扣金额、商品运费均需要计税<br _ti="28">
+                                    注：不同商品的适用税负率不同，<a target="_blank" href="//www.kaola.com/footer/pricelist.shtml" _ti="28">了解税率</a> -->
+
+                                </span>
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+                </dd>
+
+                <dd class="postage" _ti="28" style="margin-top:-10px;">
+                    <span class="m-line-title" _ti="28">运费</span>
+                    <div class="msg" _ti="28">
+
+                        <!--Regular if52-->
+                        <span _ti="28">
+                            <!--Regular if53-->
+                            <span class="from2" _ti="28">至</span>
+
+
+
+                            <!--inlcude-->
+                            <div class="mr20 m-addrw" _ti="28" style="display: inline-block;float: left;">
+                                <div class="m-addr" _ti="28">
+                                    <div class="iptw" _ti="28">
+                                        <span title="广东/深圳市/龙华区" class="iptmsg" _ti="28" style="display: inline-block;float: left;">广东/深圳市/龙华区</span>
+                                        <span class="iptdown icon-tridown" _ti="28"></span>
+                                    </div>
+                                    <div class="box" _ti="28" style="left: 0px; top: 0px; right: 0px; display: none;">
+                                        <!--inlcude-->
+
+                                        <b class="boxclose iconfont icon-close" _ti="28"></b>
+
+                                        <!--Regular if110-->
+
+                                        <h2 class="subtit" _ti="28" style="display: none;">其他区域</h2>
+
+
+                                        <div class="tt" _ti="28">
+                                            <ul class="ttw" _ti="28">
+
+                                                <li class="tli" _ti="32">省份</li>
+                                                <!--Regular if114-->
+
+                                                <li class="tli" _ti="32">城市</li>
+                                                <!--Regular if115-->
+
+                                                <li class="tli act" _ti="32">县区</li>
+                                                <!--Regular if116-->
+                                            </ul>
+                                        </div>
+                                        <!--Regular if111-->
+
+                                        <!--Regular if117-->
+                                        <!--Regular if112-->
+
+
+
+                                        <!--Regular if118-->
+                                        <!--Regular if119-->
+
+                                        <div class="boxlist boxlist2 clearfix" _ti="32">
+                                            <!--Regular list-->
+                                            <span class="tcli" _ti="32" style="width: 100px;">
+                                                <a href="javascript:void(0);" title="龙华区" class="selected" _ti="32">
+                                                    龙华区
+                                                </a>
+                                            </span>
+
+                                            <span class="tcli" _ti="32" style="width: 100px;">
+                                                <a href="javascript:void(0);" title="光明区" class="" _ti="32">
+                                                    光明区
+                                                </a>
+                                            </span>
+
+                                            <span class="tcli" _ti="32" style="width: 100px;">
+                                                <a href="javascript:void(0);" title="坪山区" class="" _ti="32">
+                                                    坪山区
+                                                </a>
+                                            </span>
+
+                                            <span class="tcli" _ti="32" style="width: 100px;">
+                                                <a href="javascript:void(0);" title="罗湖区" class="" _ti="32">
+                                                    罗湖区
+                                                </a>
+                                            </span>
+
+                                            <span class="tcli" _ti="32" style="width: 100px;">
+                                                <a href="javascript:void(0);" title="福田区" class="" _ti="32">
+                                                    福田区
+                                                </a>
+                                            </span>
+
+                                            <span class="tcli" _ti="32" style="width: 100px;">
+                                                <a href="javascript:void(0);" title="南山区" class="" _ti="32">
+                                                    南山区
+                                                </a>
+                                            </span>
+
+                                            <span class="tcli" _ti="32" style="width: 100px;">
+                                                <a href="javascript:void(0);" title="宝安区" class="" _ti="32">
+                                                    宝安区
+                                                </a>
+                                            </span>
+
+                                            <span class="tcli" _ti="32" style="width: 100px;">
+                                                <a href="javascript:void(0);" title="龙岗区" class="" _ti="32">
+                                                    龙岗区
+                                                </a>
+                                            </span>
+
+                                            <span class="tcli" _ti="32" style="width: 100px;">
+                                                <a href="javascript:void(0);" title="盐田区" class="" _ti="32">
+                                                    盐田区
+                                                </a>
+                                            </span>
+
+                                        </div>
+
+                                        <!--Regular if120-->
+
+                                        <!--Regular if113-->
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Regular if54-->
+                        </span>
+
+
+                        <span class="feeInfo" _ti="28">
+
+
+                            <!--Regular if138-->
+                            <span class="u-postage" _ti="28">
+                                <i class="fee" _ti="28">
+                                    满88元包邮
+                                    <span class="arron iconfont" _ti="28"></span>
+                                    <span class="arroff iconfont" _ti="28"></span>
+                                </i>
+                                <span class="desc" _ti="28">
+                                    <!-- <i _ti="28">自营订单满88元包邮，不足金额的订单收取10元运费。<br _ti="28">88元以商品活动后的总金额为准，不含税费，使用虚拟资产(优惠券、红包、考拉豆等)不影响包邮的计算。<br _ti="28">特殊商品、自营店铺及入驻商家商品单独计算运费。</i> -->
+                                    <!--Regular if139-->
+                                </span>
+                            </span>
+
+                            <!--Regular if55-->
+                        </span>
+                    </div>
+                </dd>
+                <dd class="m-service f-cb f-hkdn" _ti="28">
+                    <span class="m-line-title f-fl" _ti="28">服务</span>
+
+                    <!--Regular if57-->
+                    <span class="send" _ti="28">本商品由 自营保税仓 发货</span>
+
+
+
+
+                    <div _ti="28" style="padding-left: 85px;">
+
+                        <ul class="m-postage-list" _ti="28">
+                            <!--Regular list-->
+                            <li class="postage-item" _ti="28">
+                                <img alt="" src="http://haitao.nosdn3.127.net/ig1oirv958_120_120.jpg" class="postage-img" _ti="28">
+                                <p title="正品货源" class="postage-title" _ti="28">
+                                    <span class="m-tit" _ti="28">正品货源</span>
+                                </p>
+                                <!--Regular if140-->
+                                <span class="postage-line active" _ti="28"></span>
+
+                            </li>
+
+                            <li class="postage-item" _ti="28">
+                                <img alt="" src="http://nos.netease.com/haitao-sec-storage-permanent/fac1cff0fca2451ca6e06d626c3b9c42.png%2Ffahuodi%403x.png?NOSAccessKeyId=33b4f5928df44d94a03f8be77ef3ffd1&amp;Expires=3106345408&amp;Signature=kImLV0FM%2FpE1V5%2FmBHkasnie4Fe%2FbfA8onYqonWQQmE%3D&amp;download=fahuodi@3x.png"
+                                    class="postage-img" _ti="28">
+                                <p title="自营保税仓发货" class="postage-title" _ti="28">
+                                    <span class="m-tit" _ti="28">自营保税仓发货</span>
+                                </p>
+                                <!--Regular if141-->
+                                <span class="postage-line" _ti="28"></span>
+
+                            </li>
+
+                            <li class="postage-item" _ti="28">
+                                <img alt="" src="http://nos.netease.com/haitao-sec-storage-permanent/bb6715dd43324f54bd2181d9235f4f40.png%2Fmudidi%403x.png?NOSAccessKeyId=33b4f5928df44d94a03f8be77ef3ffd1&amp;Expires=3105742053&amp;Signature=6%2Ba5WndNRZO2TbZyjYhPTdyfs8oxoAIPtNCjEjKDNL0%3D&amp;download=mudidi@3x.png"
+                                    class="postage-img" _ti="28">
+                                <p title="深圳市" class="postage-title" _ti="28">
+                                    <span class="m-tit" _ti="28">深圳市</span>
+                                </p>
+                                <!--Regular if142-->
+                            </li>
+
+                        </ul>
+                        <!--Regular if58-->
+                    </div>
+                    <!--Regular if59-->
+
+                    <!--Regular if60-->
+                    <!--Regular if61-->
+                    <div class="tomorrowarr f-fc j-tomorrowArrival" _ti="28" style="">
+                        <span class="m-line-title f-fl" _ti="28"> </span>
+
+
+
+                        <!--Regular if62-->
+                        <!--Regular if63-->
+                        <span _ti="28">24:00前完成支付，预计</span>
+                        <span class="f-bold" _ti="28">5月15日(周三)</span>
+                        <span _ti="28">送达</span>
+
+
+                        <!--Regular if64-->
+
+                    </div>
+                </dd>
+                <dd class="skuBox">
+                    <span class=".m-line-title color-title">颜色</span>
+                    <div class="valueBox">
+                        <ul class="clearfix smallimg">
+                            <li class="imgBox">
+                                <span class="test"></span>
+                                <a href="javascript:;">
+                                    <img src="./images/buyimg1.jpg" alt="">
+                                </a>
+                            </li>
+                            <li class="imgBox">
+                                    <span class="test"></span>
+                                <a href="javascript:;">
+                                    <img src="./images/buyimg2.jpg" alt="">
+                                </a>
+                            </li>
+                            <li class="imgBox">
+                                    <span class="test"></span>
+                                <a href="javascript:;">
+                                    <img src="./images/buyimg3.jpg" alt="">
+                                </a>
+                            </li>
+                            <li class="imgBox">
+                                    <span class="test"></span>
+                                <a href="javascript:;">
+                                    <img src="./images/buyimg4.jpg" alt="">
+                                </a>
+                            </li>
+                            <li class="imgBox">
+                                    <span class="test"></span>
+                                <a href="javascript:;">
+                                    <img src="./images/buyimg5.jpg" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="m-buyBox">
+                        <span class="m-line-title m-line-am-30">数量</span>
+                        <em id="" class="buyBox" style="border:1px solid #ccc; display: inline-block">
+                            <span class="ctrnum-wrap">
+                                <a href="javascript:;" id="min" style="display:inline-block;font-size: 16px;font-weight: 600;width: 10px;">-</a>
+                                <input type="text" id="text_box" name="" id="" value="1" class="ctrnum-qty" style="width: 25px;height:18px">
+                                <a href="javascript:;" id="max" style="display:inline-block;font-size: 16px;font-weight: 600;width: 10px">+</a>
+                            </span>
+                        </em>
+                    </div>
+                </dd>
+                <dd _ti="35">
+                    <form id="j-formEl" method="post" action="//buy.kaola.com/order/confirm.html?from=detailfp" _ti="35">
+
+
+
+
+
+
+                        <div class="buynowonly-wrap clearfix" _ti="35">
+                            <span class="f-fl m-line-title fl m-line-am-34" _ti="35">说明</span>
+                            <ul class="buynowonly-tip-lis point clearfix" _ti="35">
+                                <!--Regular list-->
+
+                                <!--Regular if386-->
+                                <li class="link f-fl membertip">
+                                    <i></i>会员96折
+                                </li>
+
+
+
+                                <!--Regular if387-->
+                                <li class="f-fl">
+                                    <i class=""></i>正品保障</li>
+
+
+
+                                <!--Regular if388-->
+                                <li class="f-fl">
+                                    <i class=""></i>支持7天无忧退货</li>
+
+
+                            </ul>
+                        </div>
+
+                        <!--Regular if76-->
+
+
+                        <!--Regular if77-->
+
+                        <div class="buyBtns" _ti="35">
+                            <!--Regular if78-->
+
+                            <!--Regular if79-->
+                            <!--Regular if80-->
+                            <!--Regular if81-->
+                            <!--Regular if82-->
+                            <!--Regular if83-->
+
+
+
+                            <!--Regular if84-->
+                            <!--Regular if85-->
+
+
+                            <!--Regular if86-->
+                            <a href="../cart/cart.html" hidefocus="true" class="j-buynow-btn" id="buyBtn" _ti="35">立即购买</a>
+
+
+
+
+                            <!--Regular if87-->
+                            <!--Regular if88-->
+                            <!--Regular if89-->
+                            <a hidefocus="true" class="j-add2cart-btn" id="addCart" href="javascript:void(0);" _ti="35" style="background: #e31436;width: 156px;height: 46px;text-align: center;color: #fff;padding-top: 10px;">
+                                <span class="sign icon-cart20 iconfont icon-gwc" _ti="35" style="margin-right:6px; "></span>加入购物车</a>
+
+
+                            <a href="javascript:void(0)" class="m-favbtn m-favbtn-s" id="auto-id-1557708599240" _ti="35" style="visibility: visible;text-align: center;">
+                                <i class="iconfont ic icon-heart" _ti="35" style="display: none;"></i>
+                                <i class="iconfont icon-scj" _ti="35"></i>
+                                <span class="txt" _ti="35" style="font-size:14px;font-weight: 0;">收藏</span>
+                            </a>
+                        </div>
+
+                        <!--Regular if90-->
+
+                        <!--Regular if91-->
+
+                        <input type="hidden" value="1" name="goods[0].selected" _ti="35">
+                        <input type="hidden" value="1398110" name="goods[0].goodsId" _ti="35">
+                        <input type="hidden" value="147" name="goods[0].tempCurrentPrice" _ti="35">
+                        <input type="hidden" value="" name="goods[0].tempGoodsActivityType" _ti="35">
+                        <input type="hidden" value="DETAIL" _name="innerSource" name="goods[0].innerSource" _ti="35">
+                        <input type="hidden" value="2" name="s" _ti="35">
+                        <input type="hidden" value="1398110-466314ee314aa2c993e37453f0464c1e" name="goods[0].skuId" _ti="35">
+                        <input type="hidden" value="1000" name="goods[0].productType" _ti="35">
+
+
+                        <input type="hidden" autocomplete="off" value="1" name="goods[0].tempBuyAmount" _ti="35">
+
+
+                        <!--Regular if92-->
+
+
+                        <!--Regular if93-->
+
+                    </form>
+
+                </dd>
+                <dd class="m-comment-bar">
+                    <span class="fullStar percentStar">
+                        <i class="iconfont icon-scj"></i>
+                        <i class="iconfont icon-scj"></i>
+                        <i class="iconfont icon-scj"></i>
+                        <i class="iconfont icon-scj"></i>
+                        <i class="iconfont icon-scj"></i>
+                    </span>
+                    <span class="goodPercent">
+                        98%
+                    </span>
+                    <span class="comunm comm">
+                        <a href="#">51234</a>
+                        评价
+                    </span>
+                    <span class="commWithImg comm">
+                        <a href="#">51234</a>
+                        晒单
+                    </span>
+                </dd>
+                <dd class="m-excelComm j-excelComm">
+                    <p class="tit">o*****oo 2019-3-21 11:23:34</p>
+                    <p class="datail">宝贝很好，很喜欢，保温时间长久可以有6个小时左右，喜欢的小伙伴们赶快下手吧</p>
+                    <div class="tg">
+                        <div class="tagbtn iconfont icon-icon-shang"></div>
+                        <div class="tagbtn iconfont icon-xjt"></div>
+                    </div>
+                </dd>
+            </dl>
+
+        </div>
+    </article>
+</body>
+
+</html>

@@ -1,0 +1,319 @@
+
+//封装购物车的增删改查
+function Car(){
+    
+    // 增,要判断购物车种是否有该商品，有该商品就数量加一，没有就直接添加
+    //需要从本地localstorage种获取数据
+    Car.prototype.add=function(goods){
+        var carlist = this.get();
+        //需要判断购物车种是否有该商品
+        if(this.hasGoods()){//如果购物车种有该商品
+            for( var i = 0;i<carlist.length;i++){
+                if(carlist[i].id==goods.id){
+                    carlist[i].number +=goods.number;
+                    break; //已经找到该商品添加上去了，就不需要继续循环了
+                }
+            }
+        }else{
+            carlist.push(goods);
+        }
+        //每次改变localstorage种的数据都要保存一下
+        localStorage.setItem('carlist',JSON.stringify(carlist));
+
+    }
+
+    //先获取本地localstorage种的商品数据
+    Car.prototype.get = function(){
+        //当localstorage种没有数据时，要返回一个空数组，否则会报错
+        //把localstorage种的数据转换成json格式
+        var carlist = JSON.parse(localStorage.getItem('carlist'))||[];
+        return carlist;
+    }
+
+    //判断购物车种是否有该商品
+    Car.prototype.hasGoods = function(id){
+        //都需要现从本地获取商品数数据判断
+        var carlist = this.get();
+        for(var i = 0;i < carlist.length;i++){
+            if(carlist[i].id==id){
+                return true;//返回true表示在购物车种找到了该商品
+            }
+        }
+        return false;
+    }
+
+    //删，点击删除按钮删除该商品
+    Car.prototype.del=function(id){
+        var carlist=this.get();
+        for(var i=0;i<carlist.length;i++){
+            if(carlist[i].id==id){
+                carlist.splice(i,1);
+                break;
+            }
+        }
+        localStorage.setItem('carlist',JSON.stringify(carlist));
+    }
+
+    //点击删除所有商品，清空本地localstorage
+    Car.prototype.delAll=function(){
+        var carlist=this.get();
+        var length=carlist.length-1;
+        carlist.splice(0,length);
+        localStorage.setItem('carlist',JSON.stringify(carlist));
+    }
+
+    //点击加号按钮该商品数量加一   和再执行一遍add是一样的,但是传值不一样
+    Car.prototype.plus=function(id){
+        var carlist=this.get();
+        for( var i=0;i<carlist.length;i++){
+            if(carlist[i].id==id){
+                carlist[i].number++;
+                break;
+            }
+        }
+        localStorage.setItem('carlist',JSON.stringify(carlist));
+    }
+
+    //点击减号该商品数量减一
+    Car.prototype.down=function(id){
+        var carlist=this.get();
+        for( var i=0;i<carlist.length;i++){
+            //当只有一件商品，则不能再减，最少是一件
+            if(carlist[i].id==id && carlist[i].number>1){
+                carlist[i].number--;
+                break;
+            }
+        }
+        localStorage.setItem('carlist',JSON.stringify(carlist));
+    }
+
+    //计算购物车种的总价  获取localstorage中的商品数据，商品数量乘商品单价
+    Car.prototype.money=function(){
+        var carlist=this.get();
+        var money=0;
+        for(var i=0;i<carlist.length;i++){
+            money+=carlist[i].number * carlist[i].price;
+        }
+        return money;
+    }
+
+    //点击文本框能直接修改数量
+    Car.prototype.change=function(id,num){
+        var carlist=this.get();
+        for(var i=0;i<carlist.length;i++){
+            if(carlist[i].id==id){
+                carlist[i].number=num;
+            }
+        }
+        localStorage.setItem('carlist',JSON.stringify(carlist));
+    }
+
+    //计算购物车种所所有商品数量
+    Car.prototype.num=function(){
+        var carlist=this.get();
+        var num=0;
+        for(var i=0;i<carlist.length;i++){
+            num+=parseInt(carlist[i].number);
+        }
+        return num;
+    }
+
+}
+
+//进入购物车页面
+var cart=new Car();
+var carlist = cart.get();
+var str='';
+var money=0;
+// 先循环把localstorage数据拿到，然后添加到商品列表中
+for(var i=0;i<carlist.length;i++){
+    str+=`<li class="goodsitem">
+    <div class="col col1">
+        <input type="checkbox" name="selectGood" class="u-chk">
+    </div>
+    <div class="col col2">
+        <a href="javascript:void(0);" class="imgwarp">
+            <img src="./images/goods${carlist[i].id}.png" alt="">
+        </a>
+        <div class="txtwarp">
+            <h3 class="goodstlt">${carlist[i].name}</h3>
+        </div>
+    </div>
+    <div class="col col3">
+        <span>${carlist[i].price}</span>
+    </div>
+    <div class="col col4">
+        <span class="u-setcount">
+            <span class="minus z-dis" d="${carlist[i].id}">-</span>
+            <input type="text" max="10" min="1" value="${carlist[i].number}"  class="ipt i${carlist[i].id}" d="${carlist[i].id}">
+            <span class="plus" d="${carlist[i].id}">+</span>
+        </span>
+    </div>
+    <div class="col col5">
+        <span class="sum">${carlist[i].price * carlist[i].number}</span>
+    </div>
+    <div class="col col6">
+        <a class="u-opt" d="${carlist[i].id}">删除</a>
+    </div>
+</li>`
+}
+$('.actgoods').html(str);
+
+//点击加号商品加一
+$('.plus').on('click',function(){
+    // console.log($(this).attr('d'));
+    var id=$(this).attr('d');
+    console.log(id);
+    cart.plus(id);
+    location.reload();
+});
+
+//点击减号商品减一
+$('.minus').on('click',function(){
+    var id=$(this).attr('d');
+    cart.down(id);
+    location.reload();
+});
+
+//点击文本框直接修改数量
+$('.ipt').blur(function(){
+    var id=$(this).attr('d');
+    var num=$(`.i${id}`).val();
+    // console.log(id);
+    console.log(num);
+    cart.change(id,num);
+    location.reload();
+})
+
+//点击删除按钮删除该商品
+$('.u-opt').on('click',function(){
+    if(!confirm("确认要删除该商品吗？")){
+        return;
+    }
+    var id=$(this).attr('d');
+    cart.del(id);
+    location.reload();
+})
+
+//全选选中所有商品,且下方出现总价
+
+//上面全选按钮
+$('#selectAll').click(function(){
+    var money=cart.money();
+    var num=cart.num();
+    if($('#selectAll').prop('checked')==true){
+        $('.a-chk').prop('checked',true);
+        $.each($('.u-chk'),function(k,v){
+            // k是下标，v的值是dom对象,v换成this也是一样的
+            // console.log(k,v);
+            v.checked=true;
+            // this.checked=ture;
+        });
+        $('.money').html(`￥${money}`);//总价
+        $('.num').html(num);//数量
+        //去结算按钮的样式
+        $('.gobuy').css({
+            'background-color': '#e31436',
+            'cursor': 'pointer'
+        });
+        //商品列表每个商品的背景色
+        $('.goodsitem').css('background-color','#fffbf0');
+    }
+    if($('#selectAll').prop('checked')==false){
+        $('.a-chk').prop('checked',false);
+        $.each($('.u-chk'),function(k,v){
+            v.checked=false;
+            // this.checked=false;
+        });
+        $('.money').html('￥0');//总价
+        $('.num').html(0);//数量
+        //去结算按钮的样式
+        $('.gobuy').css({
+            'background-color': '#ccc',
+            'cursor': 'not-allowed'
+        });
+        //商品列表每个商品的背景色
+        $('.goodsitem').css('background-color','#fff');
+    }
+});
+ 
+//下面全选按钮
+$('#re-selectAll').click(function(){
+    var money=cart.money();
+    var num=cart.num();
+    if($('#re-selectAll').prop('checked')==true){
+        $('.a-chk').prop('checked',true);
+        $.each($('.u-chk'),function(k,v){
+            v.checked=true;
+        });
+        $('.money').html(`￥${money}`);
+        $('.num').html(num);
+        $('.gobuy').css({
+            'background-color': '#e31436',
+            'cursor': 'pointer'
+        });//去结算按钮的样式
+        $('.goodsitem').css('background-color','#fffbf0');        
+    }
+    if($('#re-selectAll').prop('checked')==false){
+        $('.a-chk').prop('checked',false);
+        $.each($('.u-chk'),function(k,v){
+            v.checked=false;
+            // this.checked=false;
+        });
+        $('.money').html('￥0');
+        $('.num').html(0);
+        $('.gobuy').css({
+            'background-color': '#ccc',
+            'cursor': 'not-allowed'
+        });//去结算按钮的样式
+        $('.goodsitem').css('background-color','#fff');
+    }
+});
+
+//点击商品列表中的checkbox按钮
+$('.u-chk').on('click',function(){
+    var money=0;
+    var num=0;
+    if($(this).prop('checked')==true){
+        $(this).parent().parent().css('background-color','#fffbf0');
+        //计算商品列表中所有选中的数量和价格
+        $.each($('.u-chk'),function(k,v){
+            if(v.checked==true){
+                // console.log($(v).parent().parent().children().eq(4).children().html());
+                // console.log($(v).parent().parent().children().eq(3).children().children().eq(1).val());
+                money+=parseInt($(v).parent().parent().children().eq(4).children().html());
+                num+=parseInt($(v).parent().parent().children().eq(3).children().children().eq(1).val());
+            }
+        });
+        $('.money').html(`￥${money}`);
+        $('.num').html(num);
+        $('.gobuy').css({
+            'background-color': '#e31436',
+            'cursor': 'pointer'
+        });//去结算按钮的样式
+    }
+    if($(this).prop('checked')==false){
+        $(this).parent().parent().css('background-color','#fff');
+        //计算商品列表中所有选中的数量和价格
+        $.each($('.u-chk'),function(k,v){
+            if(v.checked==true){
+                money+=parseInt($(v).parent().parent().children().eq(4).children().html());
+                num+=parseInt($(v).parent().parent().children().eq(3).children().children().eq(1).val());
+            }
+        });
+        $('.money').html(`￥${money}`);
+        $('.num').html(num);
+        if(parseInt($('.num').html())==0){
+            $('.gobuy').css({
+                'background-color': '#ccc',
+                'cursor': 'not-allowed'
+            });//去结算按钮的样式
+        }
+    }
+});
+
+//点击删除选中商品删除已选中的商品
+$('.delAll').on('click',function(){
+    
+})
+
